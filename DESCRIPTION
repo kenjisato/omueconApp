@@ -1,0 +1,22 @@
+Package: omueconApp
+Title: Small Shiny App for Moodle Pages 
+Version: 0.0.0.9000
+Authors@R: 
+    person("Kenji", "Sato", , "mail@kenjisato.jp", role = c("aut", "cre"))
+Description: Small Shiny App That Helps You Convert a Markdown Document 
+  into an HTML Fragment that's Ready for Copy-and-Pasting into Moodle. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Imports: 
+    omuecon (>= 0.0.0.9000),
+    rclipboard,
+    shiny,
+    stringr,
+    pkgload,
+    cookies,
+    brotli,
+    base64enc
+Remotes: 
+    github::kenjisato/omuecon

@@ -1,0 +1,65 @@
+.shiny-notification {
+  width: 200px;
+  text-align: center;
+  font-size: 250%;
+  position: fixed;
+  top: calc(50%);
+  left: calc(50% - 100px);
+}
+
+.ta .shiny-input-container {
+  width: 100%;
+}
+
+.ta .form-control {
+  height: 580px;
+  font-family: monospace, serif;
+}
+
+#md2html-preview {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 3;
+  margin: 18px 0px 5px;
+  height: 585px;
+  overflow-y: scroll;
+}
+
+#md2html-default_md, #md2html-default_css {
+  text-align: center;
+}
+
+#md2html-convert {
+  float: left;
+  color: #fff;
+  background-color: DodgerBlue;
+}
+
+#md2html-downloadData {
+  float: right;
+}
+
+#md2html-clip {
+  margin-left: 5px;
+  float: left;
+}
+
+#right-panel {
+  margin: auto 27px;
+}
+
+#right-panel hr {
+  margin: 7px auto;
+  border-color: #ddd;
+}
+
+
+@media screen and (max-width: 768px) {
+	.ta .form-control {
+		height: 300px;
+	}
+
+	#md2html-default_md, #md2html-default_css {
+	  margin-bottom: 48px;
+	}
+}
