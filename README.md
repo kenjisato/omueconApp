@@ -17,7 +17,6 @@ remotes::install_github("kenjisato/omueconApp")
 ## Example
 
 ``` r
-library(omueconApp)
-omueconApp::main()
+omueconApp::editor()
 ```
 
