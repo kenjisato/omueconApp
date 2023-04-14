@@ -10,7 +10,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Imports: 
-    omuecon (>= 0.0.2_1),
+    omuecon (>= 0.0.3),
     rclipboard,
     shiny,
     stringr,
