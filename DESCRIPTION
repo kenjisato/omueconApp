@@ -1,6 +1,6 @@
 Package: omueconApp
 Title: Small Shiny App for Moodle Pages 
-Version: 0.0.0.9002
+Version: 0.0.1
 Authors@R: 
     person("Kenji", "Sato", , "mail@kenjisato.jp", role = c("aut", "cre"))
 Description: Small Shiny App That Helps You Convert a Markdown Document 

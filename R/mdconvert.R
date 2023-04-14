@@ -1,10 +1,4 @@
 # Default documents ----
-
-dir.create(.tdir <- tempfile(pattern = "dir"))
-.md_file <- file.path(.tdir, "page.md")
-.css_file <- file.path(.tdir, "style.css")
-.html_file <- file.path(.tdir, "page.html")
-
 .sample_md <-
   paste(readLines(system.file("text", "sample.md", package = "omuecon")),
         collapse = "\n")
@@ -80,6 +74,13 @@ mdconvertUI <- function(id) {
 # Server function ----
 
 mdconvertServer <- function(id) {
+
+  .tdir <- tempfile(pattern = "dir")
+  dir.create(.tdir)
+  .md_file <- file.path(.tdir, "page.md")
+  .css_file <- file.path(.tdir, "style.css")
+  .html_file <- file.path(.tdir, "page.html")
+
   moduleServer(id, function(input, output, session) {
 
     r <- reactiveValues(html = "")
