@@ -53,6 +53,14 @@
   border-color: #ddd;
 }
 
+#md2html-type_css-label {
+  float: left;
+}
+
+#md2html-type_css .shiny-options-group {
+  float: left;
+  padding-left: 20px;
+}
 
 @media screen and (max-width: 768px) {
 	.ta .form-control {

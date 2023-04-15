@@ -2,8 +2,11 @@
 .sample_md <-
   paste(readLines(system.file("text", "sample.md", package = "omuecon")),
         collapse = "\n")
-.sample_css <-
+.sample_page_css <-
   paste(readLines(system.file("css", "style.css", package = "omuecon")),
+        collapse = "\n")
+.sample_label_css <-
+  paste(readLines(system.file("css", "label.css", package = "omuecon")),
         collapse = "\n")
 
 # UI fragments ----
@@ -30,10 +33,16 @@ left_panel <- function(.ns) {
       "CSS",
       div(
         class = "ta",
-        textAreaInput(.ns("css"), "", value = .sample_css)
+        textAreaInput(.ns("css"), "", value = .sample_page_css)
       ),
-      actionButton(.ns("default_css"), "Reset to default CSS",
-                   icon = icon("broom"))
+      fluidRow(
+        column(6, actionButton(.ns("default_css"), "Reset to default CSS",
+                              icon = icon("broom"))),
+        column(6, radioButtons(.ns("type_css"), "Type: ",
+                               c("Page" = "page", "Label" = "label"),
+                               width = "100%", inline = TRUE))
+
+      )
     )
   )
 }
@@ -97,8 +106,16 @@ mdconvertServer <- function(id) {
     observeEvent(
       get_cookie("stylesheet"), {
         cookie_val <- tryCatch(decode(get_cookie("stylesheet")),
-                               error = function(e) .sample_css)
+                               error = function(e) .sample_page_css)
         updateTextAreaInput(inputId = "css", value = cookie_val)
+      },
+      once = TRUE
+    )
+    observeEvent(
+      get_cookie("type"), {
+        cookie_val <- tryCatch(get_cookie("type"),
+                               error = function(e) "page")
+        updateRadioButtons(inputId = "type_css", selected = cookie_val)
       },
       once = TRUE
     )
@@ -122,8 +139,10 @@ mdconvertServer <- function(id) {
       css <- input$css
       writeLines(css, .css_file)
 
+      tag <- if (input$type_css == "page") "article" else "div"
+
       r$html <- omuecon::moodle_html(
-        .md_file, clip = FALSE, stylesheet = .css_file
+        .md_file, clip = FALSE, stylesheet = .css_file, tag = tag
       )
       output$preview <- renderText(r$html, sep = "\n")
     })
@@ -145,7 +164,14 @@ mdconvertServer <- function(id) {
     })
 
     observeEvent(input$default_css, {
-      updateTextAreaInput(inputId = "css", value = .sample_css)
+      default_css <- if (input$type_css == "page") {
+        .sample_page_css
+      } else {
+        .sample_label_css
+      }
+      updateTextAreaInput(inputId = "css", value = default_css)
+
+      set_cookie("type", input$type_css)
     })
 
     # Copy to clipboard
