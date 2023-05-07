@@ -10,7 +10,13 @@ editor <- function(...) {
           tabPanel("Moodle Page Helper",
                    mdconvertUI("md2html"),
                    value = 1L),
-          #tabPanel("Component 2", value = 2L),
+          tabPanel("Code Samples",
+                   fluidPage(
+                     mainPanel(
+                       includeHTML(system.file("www", "samples.html", package = .packageName))
+                     )
+                   ),
+                   value = 2L),
           #tabPanel("Component 3", value = 3L))
   )
   ui <- cookies::add_cookie_handlers(ui)

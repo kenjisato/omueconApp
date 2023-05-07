@@ -1,0 +1,56 @@
+---
+knit: (function(input, ...) {
+    omuecon::moodle_html(file = input, clip = FALSE)
+  })
+---
+
+# Tips for OMUEcon App
+
+## YouTube Video
+
+````markdown
+`r ''````{r}
+includeYT("https://youtu.be/videoid")
+```
+````
+
+```{r}
+includeYT("https://youtu.be/L1Sks-inb9M")
+```
+
+
+
+## Audio File
+
+````markdown
+`r ''````{r}
+includeAudio("https://example.com")
+```
+````
+
+```{r}
+includeAudio("https://omunet-my.sharepoint.com/:u:/g/personal/s21413e_omu_ac_jp/EcPrgs7iZKNAm8yGWK_vGE0BEc_gfAfUToP1i7wTe01vSA?e=ajLbXP&download=1")
+```
+
+
+## Quiz and Solution 
+
+````markdown
+`r ''````{r}
+includeQuestion(
+"What is the capital of Japan?",
+#-----
+"Tokyo",
+#-----
+summary_label = "Question", detail_label = "Answer")
+```
+````
+
+```{r}
+includeQuestion(
+"What is the capital of Japan?",
+#-----
+"Tokyo",
+#-----
+summary_label = "Question", detail_label = "Answer")
+```
