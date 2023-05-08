@@ -51,6 +51,12 @@ left_panel <- function(.ns) {
 right_panel <- function(.ns) {
   fluidRow(
     rclipboard::rclipboardSetup(),
+    tags$head(
+      tags$script(
+        defer="",
+        src="https://cdn.jsdelivr.net/combine/npm/katex/dist/katex.min.js,npm/katex/dist/contrib/auto-render.min.js,npm/@xiee/utils/js/render-katex.js",
+        crossorigin="anonymous")
+    ),
     div(
       id = "right-panel",
       fluidRow(
@@ -144,7 +150,7 @@ mdconvertServer <- function(id) {
       r$html <- omuecon::moodle_html(
         .md_file, clip = FALSE, stylesheet = .css_file, tag = tag
       )
-      output$preview <- renderText(r$html, sep = "\n")
+      output$preview <- renderUI(withMathJax(HTML(paste(r$html, collapse = "\n"))))
     })
 
     # Download Button
